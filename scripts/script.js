@@ -5,11 +5,8 @@ function handleContentInputKeydown(event, element){
     if (key === 'Enter') {
         updateElementContent(inputContent, element);
     }
-    else if (key === 'Escape') {
-        element.value = '';
-    }
 }
 
 function updateElementContent(inputContent, element) {
-    element.innerHTML = `<p>${inputContent}</p>`
+    element.outerHTML = `<p>${inputContent}</p>`;
 }
