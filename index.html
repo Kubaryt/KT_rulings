@@ -12,13 +12,21 @@
   </header>
 
   <main>
-    <p>1. <input placeholder="Input first point name and press enter" onkeydown="handleContentInputKeydown(event, this)"></p>
-    <p>1.1 <input placeholder="Input point 1.1 content and press enter" onkeydown="handleContentInputKeydown(event, this)"></p>
-    <button>Add list to subpoint</button>
-    <button>Add subpoint</button>
-    <button>Add point</button>
+    <section title="ruling-content">
+        <div id="js-point-1">
+            <p>1. <input placeholder="Input point name and press enter" onkeydown="handleContentInputKeydown(event, this)"></p>
+            <div id="js-point-1-1">
+                <p>1.1 <input placeholder="Input subpoint content and press enter" onkeydown="handleContentInputKeydown(event, this)"></p>
+                <button onclick="addList(this)">Add list to subpoint</button>
+            </div>
+            <button onclick="addSubpoint(this)">Add subpoint</button>
+        </div>
+        <button onclick="addPoint(this)">Add point</button>
+    </section>
   </main>
 
-  <script src="scripts/script.js"></script>
+  <script src="scripts/general.js"></script>
+  <script src="scripts/lists.js"></script>
+  <script src="scripts/points.js"></script>
 </body>
 </html>
