@@ -16,7 +16,7 @@ function addPoint(element) {
     element.remove();
 
     parentElement.innerHTML += `
-    <div id="js-point-${parentElement.childElementCount}">
+    <div id="js-point-${parentElement.childElementCount+1}">
         <p>${parentElement.childElementCount + 1}. <input placeholder="Input point name and press enter" onkeydown="handleContentInputKeydown(event, this)"></p>
         <button onclick="addSubpoint(this)">Add subpoint</button>
     </div>
