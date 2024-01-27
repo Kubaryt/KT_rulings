@@ -13,10 +13,28 @@
 
   <main>
     <section title="ruling-content">
-        <div id="js-point-1">
-            <p>1. <input placeholder="Input point name and press enter" onkeydown="handleContentInputKeydown(event, this)"></p>
-            <div id="js-point-1-1">
-                <p>1.1 <input placeholder="Input subpoint content and press enter" onkeydown="handleContentInputKeydown(event, this)"></p>
+        <div id="js-point-1" class="js-point">
+            <p>1.</p>
+            <select onchange="updateElementContent(this)">
+              <option value="#">--choose apriopate point name--</option>
+              <option value="Withdrawals">Withdrawals</option>
+              <option value="Walkovers for a Party">Walkovers for a Party</option>
+              <option value="Walkovers for a Match">Walkovers for a Match</option>
+              <option value="Appeals">Appeals</option>
+              <option value="Penalties">Penalties</option>
+              <option value="Schedule">Schedule</option>
+              <option value="Extensions of deadlines">Extensions of deadlines</option>
+              <option value="Change of the match playing system">Change of the match playing system</option>
+              <option value="Overtime">Overtime</option>
+              <option value="Interpretation">Interpretation</option>
+              <option value="Permits">Permits</option>
+              <option value="Provisions">Provisions</option>
+            </select>
+            <button onclick="deleteElement(this)">Delete point</button>
+            <div id="js-point-1-1" class="js-subpoint">
+                <p>1.1 </p>
+                <input placeholder="Input subpoint content and press enter" onkeydown="handleContentInputKeydown(event, this)">
+                <button onclick="deleteElement(this)">Delete subpoint</button>
                 <button onclick="addList(this)">Add list to subpoint</button>
             </div>
             <button onclick="addSubpoint(this)">Add subpoint</button>
@@ -25,8 +43,6 @@
     </section>
   </main>
 
-  <script src="scripts/general.js"></script>
-  <script src="scripts/lists.js"></script>
-  <script src="scripts/points.js"></script>
+  <script src="scripts/ruling_content_managing_handling.js"></script>
 </body>
 </html>
