@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>KT Rulings Generator</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-  <header>
-    <h1>KT Rulings Generator</h1>
-  </header>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KT Rulings Generator</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <header>
+      <h1 class="title">KT Rulings Generator</h1>
+    </header>
 
-  <main>
-    <section title="ruling-content">
+    <main>
+      <section title="ruling-content" class="ruling-content">
         <div id="js-point-1" class="js-point">
             <p>1.</p>
             <select onchange="updateElementContent(this)">
@@ -33,16 +33,21 @@
             <button onclick="deleteElement(this)">Delete point</button>
             <div id="js-point-1-1" class="js-subpoint">
                 <p>1.1 </p>
-                <input placeholder="Input subpoint content and press enter" onkeydown="handleContentInputKeydown(event, this)">
+                <textarea rows="1" cols="50" onkeydown="handleContentInputKeydown(event, this)">Input subpoint content</textarea>
                 <button onclick="deleteElement(this)">Delete subpoint</button>
                 <button onclick="addList(this)">Add list to subpoint</button>
             </div>
             <button onclick="addSubpoint(this)">Add subpoint</button>
         </div>
         <button onclick="addPoint(this)">Add point</button>
-    </section>
-  </main>
+      </section>
+      <div class="js-signature">
+        <textarea rows="1" cols="35" onkeydown="handleContentInputKeydown(event, this)">Input signature (author function + nickname)</textarea>
+      </div>
+      <button onclick="generateRulings(this)">Submit</button>
+    </main>
 
-  <script src="scripts/ruling_content_managing_handling.js"></script>
-</body>
+    <script src="scripts/ruling_content_managing_handling.js"></script>
+    <script src="scripts/ruling_content_generating.js"></script>
+  </body>
 </html>

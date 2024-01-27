@@ -16,10 +16,11 @@ function editElementContent(element) {
     const parentElement = element.parentElement;
 
     if (parentsParentElementClassList.contains("js-list-paragraph")) {
-        parentElement.outerHTML = `<input placeholder="Input paragraph content" onkeydown="handleContentInputKeydown(event, this)">`
+        parentElement.outerHTML = `<textarea rows="1" cols="30" onkeydown="handleContentInputKeydown(event, this)">${parentElement.innerText}</textarea>`
     }
     else if (parentsParentElementClassList.contains("js-subpoint")) {
-        parentElement.outerHTML = `<input placeholder="Input subpoint content and press enter" onkeydown="handleContentInputKeydown(event, this)">`
+        element.remove();
+        parentElement.outerHTML = `<textarea rows="1" cols="50" onkeydown="handleContentInputKeydown(event, this)">${parentElement.innerText}</textarea>`
     }
     else if (parentsParentElementClassList.contains("js-point")) {
         parentElement.outerHTML = `
@@ -39,6 +40,10 @@ function editElementContent(element) {
             <option value="Provisions">Provisions</option>  
         </select>`
     }
+    else if (parentsParentElementClassList.contains("js-signature")) {
+        element.remove();
+        parentElement.outerHTML = `<textarea rows="1" cols="50" onkeydown="handleContentInputKeydown(event, this)">${parentElement.innerText}</textarea>`
+    }
 }
 
 function deleteElement(element) {
@@ -56,7 +61,7 @@ function addList(element) {
     element.remove();
     parentElement.innerHTML += `
     <ul class="js-list">
-        <li class="js-list-paragraph"><input placeholder="Input paragraph content" onkeydown="handleContentInputKeydown(event, this)"><button onclick="deleteElement(this)">Delete paragraph</button></li>
+        <li class="js-list-paragraph"><textarea rows="1" cols="30" onkeydown="handleContentInputKeydown(event, this)">Input paragraph content</textarea><button onclick="deleteElement(this)">Delete paragraph</button></li>
         <button onclick="addListParagraph(this)">Add paragraph</button>
         <button onclick="deleteElement(this)" class="js-list-deletion-btn">Delete list</button>
 </ul>`
@@ -67,7 +72,7 @@ function addListParagraph(element) {
     parentElement.querySelector('.js-list-deletion-btn').remove();
     element.remove();
     parentElement.innerHTML += `
-    <li><input placeholder="Input paragraph content" onkeydown="handleContentInputKeydown(event, this)"><button onclick="deleteElement(this)">Delete paragraph</button></li>
+    <li><textarea rows="1" cols="30" onkeydown="handleContentInputKeydown(event, this)">Input paragraph content</textarea><button onclick="deleteElement(this)">Delete paragraph</button></li>
     <button onclick="addListParagraph(this)">Add paragraph</button>
     <button onclick="deleteElement(this)" class="js-list-deletion-btn">Delete list</button>`
 }
@@ -79,7 +84,7 @@ function addSubpoint(element) {
     parentElement.innerHTML += `
     <div id="${parentElement.id}-${parentElement.childElementCount - 2}" class="js-subpoint">
         <p>${parentElement.id[parentElement.id.length - 1]}.${parentElement.childElementCount - 2}</p>
-        <input placeholder="Input subpoint content and press enter" onkeydown="handleContentInputKeydown(event, this)">
+        <textarea rows="1" cols="50" onkeydown="handleContentInputKeydown(event, this)">Input subpoint content</textarea>
         <button onclick="deleteElement(this)">Delete subpoint</button>
         <button onclick="addList(this)">Add list to subpoint</button>
     </div>
