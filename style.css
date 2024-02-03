@@ -48,3 +48,11 @@ main {
     display: flex;
     flex-direction: column;
 }
+
+.point-content {
+    display: flex;
+}
+
+.js-subpoint {
+    display: flex;
+}
