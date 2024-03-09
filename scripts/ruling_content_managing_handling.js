@@ -1,15 +1,16 @@
-const rulingContent = document.getElementById('ruling-content')
-
-rulingContent.addEventListener('change', (event) => {
+document.body.addEventListener('change', (event) => {
     if (event.target.classList.contains('js-point-select')) {
         updateElementContent(event.target);
     }
 })
-rulingContent.addEventListener('click', (event) => {
+document.body.addEventListener('click', (event) => {
     if (event.target.classList.contains('js-point-add')) {
         addPoint(event.target);
     }
     else if (event.target.classList.contains('js-delete-button')) {
+        deleteElement(event.target);
+    }
+    else if (event.target.classList.contains('js-list-delete-button')) {
         deleteElement(event.target);
     }
     else if (event.target.classList.contains('js-subpoint-add')) {
@@ -18,13 +19,21 @@ rulingContent.addEventListener('click', (event) => {
     else if (event.target.classList.contains('js-edit-button')) {
         editElementContent(event.target);
     }
+    else if (event.target.classList.contains('js-list-add')) {
+        addList(event.target);
+    }
+    else if (event.target.classList.contains('js-list-paragraph-add')) {
+        addListParagraph(event.target);
+    }
+})
+document.body.addEventListener('keydown', (event) => {
+    if (event.target.classList.contains('js-textarea')) {
+        handleContentInputKeydown(event, event.target);
+    }
 })
 
 function handleContentInputKeydown(event, element){
-    const key = event.key;
-    const inputContent = element.value;
-
-    if (key === 'Enter') {
+    if (event.key === 'Enter') {
         updateElementContent(element);
     }
 }
@@ -38,11 +47,11 @@ function editElementContent(element) {
     const parentElement = element.parentElement;
 
     if (parentsParentElement.classList.contains("js-list-paragraph")) {
-        parentElement.outerHTML = `<textarea rows="1" cols="30" onkeydown="handleContentInputKeydown(event, this)">${parentElement.innerText}</textarea>`
+        parentElement.outerHTML = `<textarea rows="1" cols="30" class="js-textarea">${parentElement.innerText.slice(0, parentElement.innerText.length - 4)}</textarea>`
     }
     else if (parentsParentElement.classList.contains("js-subpoint")) {
         element.remove();
-        parentElement.outerHTML = `<textarea rows="1" cols="50" onkeydown="handleContentInputKeydown(event, this)">${parentElement.innerText}</textarea>`
+        parentElement.outerHTML = `<textarea rows="1" cols="50" class="js-textarea">${parentElement.innerText}</textarea>`
     }
     else if (parentsParentElement.classList.contains("js-point")) {
         parentElement.outerHTML = `
@@ -64,14 +73,14 @@ function editElementContent(element) {
     }
     else if (parentsParentElement.classList.contains("js-signature")) {
         element.remove();
-        parentElement.outerHTML = `<textarea rows="1" cols="50" onkeydown="handleContentInputKeydown(event, this)">${parentElement.innerText}</textarea>`
+        parentElement.outerHTML = `<textarea rows="1" cols="50" class="js-textarea">${parentElement.innerText}</textarea>`
     }
 }
 
 function deleteElement(element) {
     const parentElement = element.parentElement;
     if (parentElement.classList.contains("js-list")) {
-        parentElement.outerHTML = `<button onclick="addList(this)">Add list to subpoint</button>`
+        parentElement.outerHTML = `<button class="js-list-add">Add list to subpoint</button>`
     }
     else {
         parentElement.remove();
@@ -83,20 +92,20 @@ function addList(element) {
     element.remove();
     parentElement.innerHTML += `
     <ul class="js-list">
-        <li class="js-list-paragraph"><textarea rows="1" cols="30" onkeydown="handleContentInputKeydown(event, this)">Input paragraph content</textarea><button onclick="deleteElement(this)">Delete paragraph</button></li>
-        <button onclick="addListParagraph(this)">Add paragraph</button>
-        <button onclick="deleteElement(this)" class="js-list-deletion-btn">Delete list</button>
+        <li class="js-list-paragraph"><textarea rows="1" cols="30" class="js-textarea">Input paragraph content</textarea><button class="js-delete-button">Delete paragraph</button></li>
+        <button class="js-list-paragraph-add">Add paragraph</button>
+        <button class="js-list-delete-button">Delete list</button>
 </ul>`
 }
 
 function addListParagraph(element) {
     const parentElement = element.parentElement;
-    parentElement.querySelector('.js-list-deletion-btn').remove();
+    parentElement.querySelector('.js-list-delete-button').remove();
     element.remove();
     parentElement.innerHTML += `
-    <li><textarea rows="1" cols="30" onkeydown="handleContentInputKeydown(event, this)">Input paragraph content</textarea><button onclick="deleteElement(this)">Delete paragraph</button></li>
-    <button onclick="addListParagraph(this)">Add paragraph</button>
-    <button onclick="deleteElement(this)" class="js-list-deletion-btn">Delete list</button>`
+    <li class="js-list-paragraph"><textarea rows="1" cols="30" class="js-textarea">Input paragraph content</textarea><button class="js-delete-button">Delete paragraph</button></li>
+    <button class="js-list-paragraph-add">Add paragraph</button>
+    <button class="js-list-delete-button">Delete list</button>`
 }
 
 function addSubpoint(element) {
@@ -106,11 +115,11 @@ function addSubpoint(element) {
     parentElement.innerHTML += `
     <div id="${parentElement.id}-${parentElement.childElementCount - 2}" class="js-subpoint">
         <p>${parentElement.id[parentElement.id.length - 1]}.${parentElement.childElementCount - 2}</p>
-        <textarea rows="1" cols="50" onkeydown="handleContentInputKeydown(event, this)">Input subpoint content</textarea>
-        <button onclick="deleteElement(this)">Delete subpoint</button>
-        <button onclick="addList(this)">Add list to subpoint</button>
+        <textarea rows="1" cols="50" class="js-textarea">Input subpoint content</textarea>
+        <button class="js-delete-button">Delete subpoint</button>
+        <button class="js-list-add">Add list to subpoint</button>
     </div>
-    <button onclick="addSubpoint(this)">Add subpoint</button>
+    <button class="js-subpoint-add">Add subpoint</button>
     `
 }
 

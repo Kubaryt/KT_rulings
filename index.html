@@ -33,16 +33,16 @@
             <button class="js-delete-button">Delete point</button>
             <div id="js-point-1-1" class="js-subpoint">
                 <p>1.1 </p>
-                <textarea rows="1" cols="50" onkeydown="handleContentInputKeydown(event, this)">Input subpoint content</textarea>
-                <button onclick="deleteElement(this)">Delete subpoint</button>
-                <button onclick="addList(this)">Add list to subpoint</button>
+                <textarea rows="1" cols="50" class="js-textarea">Input subpoint content</textarea>
+                <button class="js-delete-button">Delete subpoint</button>
+                <button class="js-list-add">Add list to subpoint</button>
             </div>
             <button class="js-subpoint-add">Add subpoint</button>
         </div>
         <button class="js-point-add">Add point</button>
       </section>
       <div class="js-signature">
-        <textarea rows="1" cols="35" onkeydown="handleContentInputKeydown(event, this)">Input signature (author function + nickname)</textarea>
+        <textarea rows="1" cols="35" class="js-textarea">Input signature (author function + nickname)</textarea>
       </div>
       <button onclick="generateRulings(this)">Submit</button>
     </main>
