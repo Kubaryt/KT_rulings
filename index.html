@@ -1,54 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script></script>
-    <title>KT Rulings Generator</title>
-  </head>
-  <body>
-    <header>
-      <h1 class="title">KT Rulings Generator</h1>
-    </header>
-
-    <main>
-      <section id="ruling-content" class="ruling-content">
-        <div id="js-point-1" class="js-point">
-            <p>1.</p>
-            <select class="js-point-select">
-              <option value="#">--choose apriopate point name--</option>
-              <option value="Withdrawals">Withdrawals</option>
-              <option value="Walkovers for a Party">Walkovers for a Party</option>
-              <option value="Walkovers for a Match">Walkovers for a Match</option>
-              <option value="Appeals">Appeals</option>
-              <option value="Penalties">Penalties</option>
-              <option value="Schedule">Schedule</option>
-              <option value="Extensions of deadlines">Extensions of deadlines</option>
-              <option value="Change of the match playing system">Change of the match playing system</option>
-              <option value="Overtime">Overtime</option>
-              <option value="Interpretation">Interpretation</option>
-              <option value="Permits">Permits</option>
-              <option value="Provisions">Provisions</option>
-            </select>
-            <button class="js-delete-button">Delete point</button>
-            <div id="js-point-1-1" class="js-subpoint">
-                <p>1.1 </p>
-                <textarea rows="1" cols="50" class="js-textarea">Input subpoint content</textarea>
-                <button class="js-delete-button">Delete subpoint</button>
-                <button class="js-list-add">Add list to subpoint</button>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="style/main.css">
+        <title>KT Rulings Generator</title>
+    </head>
+    <body class="bg-black">
+        <header>
+            <h1 class="">KT Rulings Generator</h1>
+        </header>
+        <main class="">
+            <div id="js-point-1" class="js-point">
+                <div class="js-point-content">
+                    <p>1.</p>
+                    <select class="js-point-select">
+                        <option value="#">--choose apriopate point name--</option>
+                        <option value="Withdrawals">Withdrawals</option>
+                        <option value="Walkovers for a Party">Walkovers for a Party</option>
+                        <option value="Walkovers for a Match">Walkovers for a Match</option>
+                        <option value="Appeals">Appeals</option>
+                        <option value="Penalties">Penalties</option>
+                        <option value="Schedule">Schedule</option>
+                        <option value="Extensions of deadlines">Extensions of deadlines</option>
+                        <option value="Change of the match playing system">Change of the match playing system</option>
+                        <option value="Overtime">Overtime</option>
+                        <option value="Interpretation">Interpretation</option>
+                        <option value="Permits">Permits</option>
+                        <option value="Provisions">Provisions</option>
+                    </select>
+                    <button class="js-delete-button">Delete point</button>
+                </div>
+                <div id="js-point-1-1" class="js-subpoint">
+                    <p>1.1 </p>
+                    <textarea rows="1" cols="50" class="js-textarea">Input subpoint content</textarea>
+                    <div class="">
+                        <button class="js-delete-button">Delete subpoint</button>
+                        <button class="js-list-add">Add list to subpoint</button>
+                    </div>
+                </div>
+                <button class="js-subpoint-add">Add subpoint</button>
             </div>
-            <button class="js-subpoint-add">Add subpoint</button>
-        </div>
-        <button class="js-point-add">Add point</button>
-      </section>
-      <div class="js-signature">
-        <textarea rows="1" cols="35" class="js-textarea">Input signature (author function + nickname)</textarea>
-      </div>
-      <button onclick="generateRulings(this)">Submit</button>
-    </main>
+            <button class="js-point-add">Add point</button>
+            <div class="js-signature">
+                <textarea rows="1" cols="35" class="js-textarea">Input signature (author function + nickname)</textarea>
+            </div>
+            <button onclick="generateRulings(this)">Submit</button>
+        </main>
 
-    <script src="scripts/ruling_content_managing_handling.js"></script>
-    <script src="scripts/ruling_content_generating.js"></script>
-  </body>
+        <script src="scripts/ruling_content_managing_handling.js"></script>
+        <script src="scripts/ruling_content_generating.js"></script>
+    </body>
 </html>
